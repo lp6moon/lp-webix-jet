@@ -25,7 +25,11 @@ define([
     var body = {
         cols: [
             topMenu,
-            {$subview: true}
+            {
+                cols: [{$subview: true}]
+            }
+
+
         ]
     };
 

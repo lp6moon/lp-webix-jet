@@ -9,11 +9,23 @@ define([
     "libs/webix/codebase/i18n/zh"
 ], function (core, menu) {
     webix.i18n.setLocale("zh-CN");
-    webix.attachEvent("onAjaxError", function (request) {
 
+    webix.attachEvent("onAjaxError", function (request) {
 
         console.log("onAjaxError", arguments)
     });
+
+    webix.attachEvent("onBeforeAjax",
+        function (mode, url, data, request, headers, files, promise) {
+            //headers["Content-type"]= "application/json";
+
+            console.log("onBeforeAjax", arguments);
+            promise.fail(function(err){
+                alert(err)
+            })
+        }
+    );
+
     webix.attachEvent("onLoadError", function (text, xml, ajax, owner) {
         //text - response text
         //xml - response xml object
@@ -22,14 +34,6 @@ define([
 
         console.log("onLoadError", arguments)
     });
-
-    webix.attachEvent("onBeforeAjax",
-        function (mode, url, data, request, headers, files, promise) {
-            //headers["Content-type"]= "application/json";
-
-            console.log("onBeforeAjax", arguments);
-        }
-    );
 
     //configuration
     var app = window.app = core.create({

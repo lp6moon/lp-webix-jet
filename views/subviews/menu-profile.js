@@ -7,7 +7,7 @@ define(function () {
             padding: 0,
             data: [
                 {id: 1, icon: "user", value: "个人资料"},
-                {id: 2, icon: "pencil", value: "修改密码"},
+                {id: 2, icon: "lock", value: "修改密码"},
                 {$template: "Separator"},
                 {id: 9, icon: "sign-out", value: "注销"}
             ],
